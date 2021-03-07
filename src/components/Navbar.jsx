@@ -7,7 +7,7 @@ const Navbar=()=>{
            <li><a href='#'>KenaKata.com</a></li>
          </ul>
          <ul className='right'>
-           <li><a href='#'><span className='shoppingCart'><i class="fas fa-cart-plus"></i><span className='cartCount'>0</span></span></a></li>
+           <li><a href='#'><span className='shoppingCart'><i className="fas fa-cart-plus"></i><span className='cartCount'>0</span></span></a></li>
          </ul>
         </nav>
     )
