@@ -174,3 +174,10 @@ header{
   font-size: 14px;
   cursor: pointer;
 }
+
+/*****NOT FOUND PAGE **/
+
+.not-found{
+  margin-top: 100px;
+  text-align: center;
+}

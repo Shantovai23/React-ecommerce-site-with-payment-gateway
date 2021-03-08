@@ -1,20 +1,27 @@
-
-import './App.css';
-import Navbar from './components/Navbar.jsx'
-import Banner from './components/Banner.jsx'
-import ProductsContextProvider from './global/productsContext'
-import Products from './components/Products'
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+import NotFoundPage from './components/NotFoundPage'
+import ProductsContextProvider from "./global/productsContext";
+import Products from "./components/Products";
+import Cart from "./components/Cart";
+import CartContextProvider from './global/CartContext'
 
 function App() {
   return (
     <div className="App">
-     <Navbar/>
-     <Banner/>
-     <ProductsContextProvider>
-       <div className='container'>
-       <Products/>
-       </div>
-     </ProductsContextProvider>
+      <ProductsContextProvider>
+      <CartContextProvider>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/" exact component={Products} />
+            <Route path='/cart' exact component={Cart}/>
+            <Route component={NotFoundPage}/>
+          </Switch>
+        </Router>
+        </CartContextProvider>
+      </ProductsContextProvider>
     </div>
   );
 }
