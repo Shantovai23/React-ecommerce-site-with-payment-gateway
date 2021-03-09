@@ -1,16 +1,37 @@
-import React,{useContext} from 'react'
-import {CartContext} from '../global/CartContext'
+import React, { useContext } from "react";
+import { CartContext } from "../global/CartContext";
 
-const Cart=()=>{
-    const data=useContext(CartContext)
-    console.log(data);
-    return(
-        <div className='container'>
-            <div className='cart-container' style={{marginTop:'100px'}}>
-                  <h2>This is Cart</h2>
-            </div>
-        </div>
-    )
-}
+const Cart = () => {
+  const { shoppingCart, totalPrice, qty, dispatch } = useContext(CartContext);
 
-export default Cart
+  return (
+    <div className="cart-container">
+      <div className="cart-details" style={{ marginTop: "100px" }}>
+        {shoppingCart.length > 0
+          ? shoppingCart.map((cart) => (
+              <div className="cart" key={cart.id}>
+                <span className="cart-image">
+                  <img src={cart.image} alt="not found" />
+                </span>
+                <span className="cart-product-name">{cart.name}</span>
+                <span className="cart-product-price">${cart.price}.00</span>
+                <span className="inc" onClick={()=>dispatch({type:'INC',id:cart.id,cart})}>
+                  <i className="fas fa-plus"></i>
+                </span>
+                <span className="product-quantity">{cart.qty}</span>
+                <span className="dec" onClick={()=>dispatch({type:'DEC',id:cart.id,cart})}>
+                  <i className="fas fa-minus"></i>
+                </span>
+                <span className="product-total-price">${cart.price*cart.qty}.00</span>
+                <span className="delete-product" onClick={()=>dispatch({type:'DELETE',id:cart.id,cart})}>
+                  <i className="fas fa-trash-alt"></i>
+                </span>
+              </div>
+            ))
+          : "Sorry your cart is currently empty"}
+      </div>
+    </div>
+  );
+};
+
+export default Cart;
