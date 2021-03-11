@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../global/productsContext.js";
 import { CartContext } from "../global/CartContext.js";
 import Banner from "./Banner";
+import Button from '@material-ui/core/Button';
 const Products = () => {
   const { products } = useContext(ProductsContext);
   const { dispatch } = useContext(CartContext);
+  
 
   return (
     <div className="container">
@@ -19,7 +21,7 @@ const Products = () => {
               <div className="product-name">{product.name}</div>
               <div className="product-price">${product.price}.00</div>
             </div>
-            <div
+            <Button variant="contained" color="primary"
               className="add-to-cart"
               onClick={() =>
                 dispatch({
@@ -30,7 +32,7 @@ const Products = () => {
               }
             >
               Add to Cart
-            </div>
+            </Button>
             {product.status === "hot" ? <div className="hot">Hot</div> : ""}
             {product.status === "new" ? <div className="new">New</div> : ""}
           </div>

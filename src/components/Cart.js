@@ -11,6 +11,7 @@ const Cart = (props) => {
 
 
   const handleToken = async (token) => {
+    alert('Wait 5-10 seconds for confirmation message')
 
     const product = {name: 'All Products', price: totalPrice}
       const response = await axios.post('https://w7gqb.sse.codesandbox.io/checkout', {
@@ -20,16 +21,17 @@ const Cart = (props) => {
       const {status} = response.data;
       console.log(status);
       if(status === 'success'){
-         alert('Wait 5-10 seconds for confirmation message')
+        
          
           dispatch({type: 'EMPTY'});
-          props.history.push(`/`)
+          props.history.push(`/React-ecommerce-site-with-payment-gateway`)
           toast.success("You have Paid Successfully", {
             position: toast.POSITION.BOTTOM_RIGHT
           });
 
       } else {
-        alert('Wait 5-10 seconds for confirmation message')
+        dispatch({type: 'EMPTY'});
+        props.history.push(`/React-ecommerce-site-with-payment-gateway`)
         toast.error("Tomar Account e Taka Nai Bro!", {
           position: toast.POSITION.BOTTOM_RIGHT
         });
