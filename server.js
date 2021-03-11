@@ -2,7 +2,7 @@ const cors = require("cors");
 const express = require("express");
 // const stripe = require("stripe")("sk_test_51ITpDVLiXRZbyrOFsVOABo6nPMXnFTNevBI7hGNrALpHfCfCjglgIB6709loBaoOOtqdXsOuWgV1dsf85QX9B5CC00fANYSwG4");
 // const { uuid }  = require("uuid/v4");
-const stripe = require("stripe")("sk_test_3bFivefJDiBEOZdfECa5YJsr00P0Uyy98A");
+const stripe = require("stripe")("sk_test_51ITpDVLiXRZbyrOFsVOABo6nPMXnFTNevBI7hGNrALpHfCfCjglgIB6709loBaoOOtqdXsOuWgV1dsf85QX9B5CC00fANYSwG4");
 
 
 

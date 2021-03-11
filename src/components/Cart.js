@@ -20,6 +20,7 @@ const Cart = (props) => {
       const {status} = response.data;
       console.log(status);
       if(status === 'success'){
+         alert('Wait 5-10 seconds for confirmation message')
          
           dispatch({type: 'EMPTY'});
           props.history.push(`/`)
@@ -28,7 +29,8 @@ const Cart = (props) => {
           });
 
       } else {
-        toast.error("Low Balance", {
+        alert('Wait 5-10 seconds for confirmation message')
+        toast.error("Tomar Account e Taka Nai Bro!", {
           position: toast.POSITION.BOTTOM_RIGHT
         });
       }
@@ -76,7 +78,7 @@ const Cart = (props) => {
            <StripeCheckout 
           //  stripeKey='pk_test_51ITpDVLiXRZbyrOF45uQsF3D6BgBGYpKouv4c5vV3WPX42yhkHo8zYdO6FFPnVeyyRIOLmMOYpmvgSZ41Kno0WC000hzAtqX2Q'
            pk_test_HnF0cQhq9UGw2GvWRltNiAQM00kn9HlRCg
-           stripeKey='pk_test_HnF0cQhq9UGw2GvWRltNiAQM00kn9HlRCg'
+           stripeKey='pk_test_51ITpDVLiXRZbyrOF45uQsF3D6BgBGYpKouv4c5vV3WPX42yhkHo8zYdO6FFPnVeyyRIOLmMOYpmvgSZ41Kno0WC000hzAtqX2Q'
            token={handleToken}
            billingAddress
            shippingAddress
