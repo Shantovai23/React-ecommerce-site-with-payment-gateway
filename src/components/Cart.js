@@ -1,8 +1,39 @@
 import React, { useContext } from "react";
 import { CartContext } from "../global/CartContext";
+import StripeCheckout from 'react-stripe-checkout'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+  toast.configure()
 
-const Cart = () => {
+const Cart = (props) => {
   const { shoppingCart, totalPrice, qty, dispatch } = useContext(CartContext);
+
+
+  const handleToken = async (token) => {
+
+    const product = {name: 'All Products', price: totalPrice}
+      const response = await axios.post('https://w7gqb.sse.codesandbox.io/checkout', {
+          token,
+          product
+      });
+      const {status} = response.data;
+      console.log(status);
+      if(status === 'success'){
+         
+          dispatch({type: 'EMPTY'});
+          props.history.push(`/`)
+          toast.success("You have Paid Successfully", {
+            position: toast.POSITION.BOTTOM_RIGHT
+          });
+
+      } else {
+        toast.error("Low Balance", {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+      }
+
+}
 
   return (
     <div className="cart-container">
@@ -30,6 +61,34 @@ const Cart = () => {
             ))
           : "Sorry your cart is currently empty"}
       </div>
+      {shoppingCart.length>0 && <div className='cart-summery'>
+        <div className='summery'>
+          <h3>Cart Summery</h3>
+          <div className='total-items'>
+            <div className='items'> Total Items</div>
+            <div className='items-count'> {qty}</div>
+          </div>
+          <div className='total-price-section'>
+            <div className='just-title'>Total Price</div>
+            <div className='items-price'>${totalPrice}.00</div>
+          </div>
+          <div className='stripe-section'>
+           <StripeCheckout 
+          //  stripeKey='pk_test_51ITpDVLiXRZbyrOF45uQsF3D6BgBGYpKouv4c5vV3WPX42yhkHo8zYdO6FFPnVeyyRIOLmMOYpmvgSZ41Kno0WC000hzAtqX2Q'
+           pk_test_HnF0cQhq9UGw2GvWRltNiAQM00kn9HlRCg
+           stripeKey='pk_test_HnF0cQhq9UGw2GvWRltNiAQM00kn9HlRCg'
+           token={handleToken}
+           billingAddress
+           shippingAddress
+           amount={totalPrice*100}
+           name='All Products'
+           
+           >
+
+           </StripeCheckout>
+          </div>
+        </div>
+      </div>}
     </div>
   );
 };

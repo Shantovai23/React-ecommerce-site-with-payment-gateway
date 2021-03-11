@@ -52,6 +52,10 @@ export const CartReducer = (state, action) => {
             updatedQty=qty-product.qty
             updatedPrice=totalPrice-product.price*product.qty
             return {shoppingCart:[...filtered],totalPrice:updatedPrice,qty:updatedQty}
+             break
+             case 'EMPTY':
+              return {shoppingCart: [], totalPrice: 0, message: '', qty: 0}
+      
 
     default:
       return state;
