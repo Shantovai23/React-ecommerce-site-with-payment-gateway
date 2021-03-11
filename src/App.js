@@ -16,7 +16,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route path="/React-ecommerce-site-with-payment-gateway" exact component={Products} />
-            <Route path='/cart' exact component={Cart}/>
+            <Route path='/React-ecommerce-site-with-payment-gateway/cart' exact component={Cart}/>
             <Route component={NotFoundPage}/>
           </Switch>
         </Router>
