@@ -416,7 +416,27 @@ header{
     color: #999;
     text-align: center;
   }
-}
+  nav{
+    padding: 0 20px;
+  }
+  .container{
+    padding: 0 20px;
+  }
+  .cart-product-name{
+    padding: 20px 60px;
+  }
+  .total-items{
+    margin: 20px 0;
+  }
+  .items-count{
+    margin: 40px 0;
+  }
+  .items-price{
+    margin: 40px 0;
+  }
+  
+  }
+
  
 
 
